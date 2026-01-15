@@ -2,20 +2,28 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Nilesh Indani | Professional Portfolio</title>
+  <title>Your Name | Professional Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
+    /* GLOBAL */
+    html {
+      scroll-behavior: smooth;
+    }
     body {
       font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
       background: #f4f6f8;
       color: #2c3e50;
     }
+
+    /* HEADER & NAV */
     header {
       background: #1f2a44;
       padding: 15px 0;
       position: sticky;
       top: 0;
+      z-index: 1000;
     }
     nav {
       max-width: 1000px;
@@ -27,10 +35,24 @@
       color: #ffffff;
       text-decoration: none;
       font-weight: 500;
+      position: relative;
+      padding-bottom: 4px;
     }
-    nav a:hover {
-      text-decoration: underline;
+    nav a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: #ffffff;
+      transition: width 0.3s ease;
     }
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* CONTAINER */
     .container {
       max-width: 1000px;
       margin: auto;
@@ -38,26 +60,58 @@
       background: #ffffff;
       margin-top: 20px;
     }
+
     h1, h2 {
       color: #1f2a44;
     }
+
     section {
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
+
+    /* FADE-IN ANIMATION */
+    .fade-section {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    .fade-section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* WORK HISTORY */
     .job {
-      margin-bottom: 20px;
+      margin-bottom: 25px;
     }
+
+    /* CASE STUDIES */
     .case-study {
       background: #f9fafb;
       padding: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       border-left: 4px solid #1f2a44;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
+    .case-study:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+    /* FOOTER */
     footer {
       text-align: center;
       padding: 20px;
       background: #1f2a44;
       color: #ffffff;
+    }
+
+    /* ACCESSIBILITY: REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+        animation: none !important;
+      }
     }
   </style>
 </head>
@@ -76,73 +130,89 @@
 
 <div class="container">
 
-  <section id="home">
-    <h1>Nilesh Indani</h1>
-    <p><strong>Principal Consultant | Energy Utilities, Oil and Gas </strong></p>
+  <section id="home" class="fade-section">
+    <h1>Your Name</h1>
+    <p><strong>Designation | Industry</strong></p>
     <p>
-      Accomplished Sr Architect and Business Analysis Manager with 17.4 years’ experience in leading Utilities achieve strategy and tactical change initiatives to generate revenue, increase market share. Possessing in-depth knowledge in AI lead delivery solutions with cyber security focus in utility’s transformation journey. Experienced in IoT-enabled utilities projects, including DER integration, battery storage monitoring, and smart grid telemetry using IEEE 2030.5 and CSIP standards.
+      Senior professional summary highlighting expertise, leadership,
+      and high-impact project experience.
     </p>
   </section>
 
-  <section id="work">
+  <section id="work" class="fade-section">
     <h2>Work History</h2>
 
     <div class="job">
-      <strong>Wipro Ltd</strong> Business Analysis Manager (2021–till now)
+      <strong>Company Name</strong> — Role (Year–Year)
       <ul>
-        <li>Business Analysis Manager, Domain Architect</li>
-        <li>Generation of AAR ratings for transmission assets, field services management revamp project for uplifting FSM and SSAM, architectural designs with cyber security focus for utilities virtual power plant transformation journey for Engie from 50k battery to 1.78 million battery installations under 35 MW program </li>
-        <li>Market regulators projected to unlock 3-5 million in operational efficiency through improved network reliability and regulatory compliance, driving $2.1 million in savings in next five years by enabling real-time IoT monitoring and control of distributed solar assets, $1.2 million in revenue savings in service offering expertise in meter to cash, achieving 15X faster than traditional efforts using vFunctionin in modernization of Gas distribution platform Gemini </li>
+        <li>Key responsibility or leadership achievement</li>
+        <li>Major project size / scope</li>
+        <li>Stakeholder or client interaction</li>
       </ul>
     </div>
 
     <div class="job">
-      <strong>Siemens, Accenture and IBM</strong> Senior Business Analyst (2008–2021)
+      <strong>Previous Company</strong> — Role (Year–Year)
       <ul>
-        <li>~45%  of the total revenue garnered by Bihar Discoms is generated through Smart Consumer App by enabling Delivery led full range of services and solutions from meter installation to integration for Asian utility client journey with international networks to roll out 5 million smart meters in India  </li>
-        <li>Meter Data Management / 20+ resources</li>
+        <li>System design / implementation work</li>
+        <li>Standards and compliance handled</li>
       </ul>
     </div>
   </section>
 
-  <section id="cases">
+  <section id="cases" class="fade-section">
     <h2>Case Studies</h2>
 
     <div class="case-study">
-      <h3>FERC 881 – Correlation Software</h3>
-      <p><strong>Avangrid</strong> Transmission and Distribution</p>
-      <p><strong>Challenge:</strong> Customer had no business process or business rules</p>
-      <p><strong>Solution:</strong> Built a reusable, regulation-agnostic data correlation framework to support transmission owners in meeting FERC 881 and similar regulatory mandates.</p>
-      <p><strong>Outcome:</strong> Market regulators projected to unlock 3-5 million in operational efficiency through improved network reliability and regulatory compliance.</p>
+      <h3>Case Study 1 – Project Title</h3>
+      <p><strong>Client / Sector:</strong> Utility / Renewable / Industrial</p>
+      <p><strong>Challenge:</strong> Technical or operational challenge.</p>
+      <p><strong>Solution:</strong> Engineering or management solution delivered.</p>
+      <p><strong>Outcome:</strong> Quantified results, reliability, or cost savings.</p>
     </div>
 
     <div class="case-study">
-      <h3>Virtual Power Plant – Domain Architecting the Go-To Market Designs</h3>
-      <p><strong>Challenge:</strong> Had to design the system design keeping in mind the customers roadmap for next 5 years </p>
-      <p><strong>Solution:</strong> Provided go to market architectural designs with cyber security focus for utilities virtual power plant transformation journey for Engie from 50k battery to 1.78 million battery installations under 35 MW program. </p>
-      <p><strong>Outcome:</strong> Provided them easy to maintain reusable design with clear instructions or placeholders with plug and play inputs</p>
+      <h3>Case Study 2 – Project Title</h3>
+      <p><strong>Challenge:</strong> …</p>
+      <p><strong>Solution:</strong> …</p>
+      <p><strong>Outcome:</strong> …</p>
     </div>
   </section>
 
-  <section id="skills">
+  <section id="skills" class="fade-section">
     <h2>Skills</h2>
     <p>
-      Protection & Control, System Studies, Project Management,
-      Client Coordination, Standards Compliance, Tools & Software
+      Protection & Control, Power Systems, Project Management,
+      Design Standards, Client Coordination, Software Tools
     </p>
   </section>
 
-  <section id="contact">
+  <section id="contact" class="fade-section">
     <h2>Contact</h2>
-    <p>Email: nilesh.indani@gmail.com</p>
-    <p>LinkedIn: <a href="#" target="_blank">https://www.linkedin.com/in/nilesh-indani-288a7111/</a></p>
+    <p>Email: your@email.com</p>
+    <p>LinkedIn: <a href="#" target="_blank">Profile Link</a></p>
   </section>
 
 </div>
 
 <footer>
-  © 2026 Nilesh Indani| Professional Portfolio
+  © 2026 Nilesh Indani | Professional Portfolio
 </footer>
+
+<!-- FADE-IN SCRIPT -->
+<script>
+  const sections = document.querySelectorAll('.fade-section');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  sections.forEach(section => observer.observe(section));
+</script>
 
 </body>
 </html>
