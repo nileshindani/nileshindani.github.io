@@ -1,187 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Your Name | Professional Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Modern Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    :root {
-      --accent: #6366f1;
-      --text-dark: #111827;
-      --text-light: #6b7280;
-      --bg-light: #f6f7fb;
-      --card-bg: #ffffff;
-    }
-
+    /* GLOBAL */
     html {
       scroll-behavior: smooth;
     }
-
     body {
+      font-family: "Segoe UI", Arial, sans-serif;
       margin: 0;
-      font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg-light);
-      color: var(--text-dark);
+      background: #f4f6f8;
+      color: #2c3e50;
     }
 
-    /* HEADER */
+    /* HEADER & NAV */
     header {
+      background: #1f2a44;
+      padding: 15px 0;
       position: sticky;
       top: 0;
       z-index: 1000;
-      background: rgba(255,255,255,0.85);
-      backdrop-filter: blur(14px);
-      border-bottom: 1px solid #e5e7eb;
     }
-
     nav {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: auto;
-      padding: 16px 24px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      justify-content: space-around;
     }
-
-    nav .logo {
-      font-weight: 600;
-      letter-spacing: -0.02em;
-    }
-
     nav a {
-      margin-left: 20px;
+      color: #ffffff;
       text-decoration: none;
-      color: var(--text-dark);
       font-weight: 500;
       position: relative;
+      padding-bottom: 4px;
     }
-
     nav a::after {
       content: '';
       position: absolute;
       left: 0;
-      bottom: -6px;
+      bottom: 0;
       width: 0;
       height: 2px;
-      background: var(--accent);
+      background: #ffffff;
       transition: width 0.3s ease;
     }
-
     nav a:hover::after {
       width: 100%;
     }
 
-    /* LAYOUT */
+    /* CONTAINER */
     .container {
-      max-width: 1100px;
+      max-width: 1000px;
       margin: auto;
-      padding: 60px 24px;
+      padding: 40px 20px;
+      background: #ffffff;
+      margin-top: 20px;
+    }
+
+    h1, h2 {
+      color: #1f2a44;
     }
 
     section {
-      scroll-margin-top: 90px;
-      margin-bottom: 50px;
+      margin-bottom: 60px;
     }
 
-    .card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      padding: 48px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-    }
-
-    /* ANIMATION */
+    /* FADE-IN ANIMATION */
     .fade-section {
       opacity: 0;
-      transform: translateY(24px);
-      transition: all 0.8s ease;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-
     .fade-section.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* TYPOGRAPHY */
-    h1 {
-      font-size: 3rem;
-      letter-spacing: -0.04em;
-      margin-bottom: 10px;
-    }
-
-    h2 {
-      font-size: 1.9rem;
-      margin-bottom: 20px;
-    }
-
-    p, li {
-      color: var(--text-light);
-      line-height: 1.7;
-    }
-
-    /* BUTTON */
-    .btn-resume {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 28px;
-      border-radius: 999px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      font-weight: 500;
-      box-shadow: 0 12px 30px rgba(99,102,241,0.35);
-      transition: transform 0.2s ease;
-    }
-
-    .btn-resume:hover {
-      transform: translateY(-2px);
-    }
-
-    /* WORK */
+    /* WORK HISTORY */
     .job {
-      margin-bottom: 30px;
+      margin-bottom: 25px;
     }
 
     /* CASE STUDIES */
-    .case-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
     .case-study {
-      border-radius: 16px;
-      padding: 30px;
       background: #f9fafb;
+      padding: 20px;
+      margin-bottom: 25px;
+      border-left: 4px solid #1f2a44;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
     .case-study:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 30px rgba(0,0,0,0.08);
-    }
-
-    .case-study a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 500;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
     }
 
     /* FOOTER */
     footer {
       text-align: center;
-      padding: 50px 0;
-      color: var(--text-light);
+      padding: 20px;
+      background: #1f2a44;
+      color: #ffffff;
     }
 
+    /* ACCESSIBILITY: REDUCED MOTION */
     @media (prefers-reduced-motion: reduce) {
       * {
-        animation: none !important;
         transition: none !important;
+        animation: none !important;
       }
     }
   </style>
@@ -191,91 +120,89 @@
 
 <header>
   <nav>
-    <div class="logo">Your Name</div>
-    <div>
-      <a href="#home">Home</a>
-      <a href="#work">Work</a>
-      <a href="#cases">Case Studies</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </div>
+    <a href="#home">Home</a>
+    <a href="#work">Work History</a>
+    <a href="#cases">Case Studies</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <div class="container">
 
-  <section id="home" class="fade-section card">
+  <section id="home" class="fade-section">
     <h1>Your Name</h1>
-    <p><strong>Senior Professional | Industry</strong></p>
+    <p><strong>Designation | Industry</strong></p>
     <p>
-      Senior-level professional with extensive experience delivering
-      complex projects, leading multidisciplinary teams, and supporting
-      high-impact clients across critical infrastructure and technology domains.
+      Senior professional summary highlighting expertise, leadership,
+      and high-impact project experience.
     </p>
-    <a href="resume.pdf" class="btn-resume">Download Resume</a>
   </section>
 
-  <section id="work" class="fade-section card">
+  <section id="work" class="fade-section">
     <h2>Work History</h2>
 
     <div class="job">
       <strong>Company Name</strong> — Role (Year–Year)
       <ul>
-        <li>Led high-value projects and multidisciplinary teams</li>
-        <li>Delivered compliant, client-ready technical solutions</li>
-        <li>Direct coordination with stakeholders and utilities</li>
+        <li>Key responsibility or leadership achievement</li>
+        <li>Major project size / scope</li>
+        <li>Stakeholder or client interaction</li>
       </ul>
     </div>
 
     <div class="job">
       <strong>Previous Company</strong> — Role (Year–Year)
       <ul>
-        <li>Design, review, and delivery of system-level solutions</li>
-        <li>Standards, quality, and risk management</li>
+        <li>System design / implementation work</li>
+        <li>Standards and compliance handled</li>
       </ul>
     </div>
   </section>
 
-  <section id="cases" class="fade-section card">
+  <section id="cases" class="fade-section">
     <h2>Case Studies</h2>
 
-    <div class="case-grid">
-      <div class="case-study">
-        <h3>Project Title 1</h3>
-        <p>Utility / Renewable / Infrastructure</p>
-        <a href="case-studies/case1.html">Read full case study →</a>
-      </div>
+    <div class="case-study">
+      <h3>Case Study 1 – Project Title</h3>
+      <p><strong>Client / Sector:</strong> Utility / Renewable / Industrial</p>
+      <p><strong>Challenge:</strong> Technical or operational challenge.</p>
+      <p><strong>Solution:</strong> Engineering or management solution delivered.</p>
+      <p><strong>Outcome:</strong> Quantified results, reliability, or cost savings.</p>
+    </div>
 
-      <div class="case-study">
-        <h3>Project Title 2</h3>
-        <p>Complex system delivery & optimisation</p>
-        <a href="case-studies/case2.html">Read full case study →</a>
-      </div>
+    <div class="case-study">
+      <h3>Case Study 2 – Project Title</h3>
+      <p><strong>Challenge:</strong> …</p>
+      <p><strong>Solution:</strong> …</p>
+      <p><strong>Outcome:</strong> …</p>
     </div>
   </section>
 
-  <section id="skills" class="fade-section card">
+  <section id="skills" class="fade-section">
     <h2>Skills</h2>
     <p>
-      System Design · Project Leadership · Standards & Compliance ·
-      Client Coordination · Technical Reviews · Documentation
+      Protection & Control, Power Systems, Project Management,
+      Design Standards, Client Coordination, Software Tools
     </p>
   </section>
 
-  <section id="contact" class="fade-section card">
+  <section id="contact" class="fade-section">
     <h2>Contact</h2>
     <p>Email: your@email.com</p>
-    <p>LinkedIn: <a href="#" target="_blank">LinkedIn Profile</a></p>
+    <p>LinkedIn: <a href="#" target="_blank">Profile Link</a></p>
   </section>
 
 </div>
 
 <footer>
-  © 2026 Your Name · All Rights Reserved
+  © 2026 Your Name | Professional Portfolio
 </footer>
 
+<!-- FADE-IN SCRIPT -->
 <script>
   const sections = document.querySelectorAll('.fade-section');
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
